@@ -1,9 +1,10 @@
+import Header from "./components/Header";
 import './App.css';
 
 const App = () => {
   return (
     <div className="app">
-      <h1>app</h1>
+      <Header/>
     </div>
   );
 };
