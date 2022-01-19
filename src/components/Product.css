@@ -41,3 +41,7 @@
   color: #111;
   background: #f0c14b;
 }
+
+.product > button:hover {
+  cursor: pointer;
+}

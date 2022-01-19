@@ -17,6 +17,7 @@ const Home = () => {
             image="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1394265182l/12969026.jpg"
             rating={5}
           />
+
           <Product
             id="49538094"
             title="Kenwood kMix Stand Mixer for Baking, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Litre Glass Bowl"
@@ -34,6 +35,7 @@ const Home = () => {
             image="https://m.media-amazon.com/images/I/61y5+Sq3IqS._AC_SL1500_.jpg"
             rating={3}
           />
+
           <Product
             id="8934586"
             title="Echo (4th Gen) | With premium sound, smart home hub, and Alexa | Twilight Blue"
@@ -41,6 +43,7 @@ const Home = () => {
             image="https://m.media-amazon.com/images/I/71yEX4ugtJL._AC_SL1000_.jpg"
             rating={5}
           />
+
           <Product
             id="8345864"
             title="2021 Apple 12.9-inch iPad Pro (Wi‑Fi, 128GB) - Space Gray"
