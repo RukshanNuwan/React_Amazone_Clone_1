@@ -9,6 +9,7 @@ import {onAuthStateChanged} from 'firebase/auth';
 import {auth} from "./firebase";
 import {useStateValue} from "./state/StateProvider";
 import Payment from "./components/Payment";
+import Orders from "./components/Orders";
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements, useElements, useStripe} from "@stripe/react-stripe-js";
 
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/login" element={<Login/>}/>
           <Route path="/" element={<Home/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
+          <Route path="/orders" element={<Orders/>}/>
           <Route path="/payment" element={(
             <Elements stripe={promise}>
               <Payment/>

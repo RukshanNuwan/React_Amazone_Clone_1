@@ -6,6 +6,8 @@ import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import CurrencyFormat from 'react-currency-format';
 import {getBasketTotal} from "../state/reducer";
 import axios from "../axios";
+import {db} from "../firebase";
+import {collection, doc, setDoc} from 'firebase/firestore';
 import './Payment.css';
 
 const Payment = () => {
@@ -29,11 +31,12 @@ const Payment = () => {
         url: `/payments/create?total=${getBasketTotal(state.basket) * 100}`
       });
 
+      // x--------this is not working. there is no receive a response. so no data from response--------x
       setClientSecret(response.data.clientSecret);
     };
 
-    getClientSecret();
-  }, [state]);
+    getClientSecret().then(r => console.log(r));
+  }, [state.basket]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,11 +48,20 @@ const Payment = () => {
         card: elements.getElement(CardElement)
       }
     }).then(({paymentIntent}) => {
-      //...
+      const colRef = collection(db, 'users');
+      setDoc(doc(colRef, state.user?.uid, 'orders', paymentIntent.id), {
+        basket: state.basket,
+        amount: paymentIntent.amount,
+        created: paymentIntent.created
+      });
 
       setSucceeded(true);
       setError(null);
       setProcessing(false);
+
+      dispatch({
+        type: 'EMPTY_BASKET'
+      });
 
       navigate('/orders');
     });
